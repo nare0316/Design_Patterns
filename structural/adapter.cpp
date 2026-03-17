@@ -4,6 +4,7 @@
 class RoundPeg {
     float radius;
 public:
+    virtual ~RoundPeg() = default;
     RoundPeg(float radius) : radius(radius) {}
     RoundPeg() = default;
     virtual float getRadius() const {
