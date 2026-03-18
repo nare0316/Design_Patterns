@@ -8,7 +8,7 @@ public:
     virtual ~Graphic() = default;
     virtual void move(size_t z, size_t y) = 0;
     virtual void draw() = 0;
-    virtual bool operator==(const Graphic& oth) { return true; };
+    virtual bool operator==(const Graphic& oth) = 0;
 };
 
 class Dot : public Graphic {
@@ -78,6 +78,10 @@ public:
             child->draw();
         }
     }
+    virtual bool operator==(const Graphic& oth)  {
+        return this == &oth;
+    }
+
 };
 
 class ImageEditor {
@@ -109,4 +113,6 @@ int main() {
     graph_vec.push_back(std::make_shared<Circle>(5, 3, 10));
     std::cout << ".......\n";
     image_editor->groupSelected(graph_vec);
+    std::cout << ".......\n";
+
 }
